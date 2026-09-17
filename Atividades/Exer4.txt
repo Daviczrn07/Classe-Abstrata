@@ -1,0 +1,30 @@
+﻿namespace Classe_Abstrata
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            CampoTexto campoTextoValido = new CampoTexto { NomeDoCampo = "Nome", Valor = "João" };
+            CampoTexto campoTextoInvalido = new CampoTexto { NomeDoCampo = "Sobrenome", Valor = "" };
+            CampoNumerico campoNumericoInvalido = new CampoNumerico { NomeDoCampo = "Idade", Valor = "ABC" };
+
+            List<IValidavel> campos = new List<IValidavel>
+        {
+            campoTextoValido,
+            campoTextoInvalido,
+            campoNumericoInvalido
+        };
+
+            foreach (IValidavel campo in campos)
+            {
+                CampoFormulario formCampo = campo as CampoFormulario;
+                string nome = formCampo != null ? formCampo.NomeDoCampo : "Campo";
+
+                bool eValido = campo.Validar();
+                Console.WriteLine($"O campo '{nome}' (Valor: \"{formCampo?.Valor}\") é válido? {eValido}");
+            }
+        }
+    }
+}
+
+
