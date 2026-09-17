@@ -1,0 +1,18 @@
+﻿namespace Classe_Abstrata
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Espada e = new Espada { Nome = "Espada", DanoBase = 50 };
+            Arco a = new Arco { Nome = "Arco", DanoBase = 30 };
+
+            e.ExibirInfo();
+            Console.WriteLine($"Ataque Crítico: {e.CalcularAtaqueCritico()}");
+
+            a.ExibirInfo();
+            Console.WriteLine($"Ataque Crítico: {a.CalcularAtaqueCritico()}");
+        }
+    }
+}
+
